@@ -1,0 +1,42 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+version = "1.0-SNAPSHOT"
+mainClassName = "org.volcra.coffeescript.compiler.Main"
+
+repositories {
+    mavenCentral()
+
+    mavenLocal()
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.1.1"
+    compile "org.mozilla:rhino:1.7R4"
+    compile "commons-cli:commons-cli:1.2"
+    compile "commons-io:commons-io:2.4"
+
+    testCompile "junit:junit:4.11"
+}
+
+jar {
+    /*
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }*/
+
+    manifest {
+        attributes "Main-Class": "org.volcra.coffeescript.compiler.Main"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.4'
+}
+
+task libs(type: Sync) {
+  from configurations.compile
+  into "build\\libs"
+}
