@@ -1,7 +1,9 @@
 apply plugin: 'groovy'
 apply plugin: 'application'
+apply plugin: 'eclipse'
 
 version = "0.0.1-SNAPSHOT"
+
 mainClassName = "org.volcra.coffeescript.compiler.Main"
 
 repositories {

@@ -1,6 +1,19 @@
-target
-build
-.gradle
+# Build folders
+target/
+build/
+bin/
+.gradle/
+.groovy/
+
+# Sublime Text
 *.sublime*
+
+# Idea
 *.iml
+*.idea
 *.bat
+
+# eclipse
+.classpath
+.project
+.settings/
