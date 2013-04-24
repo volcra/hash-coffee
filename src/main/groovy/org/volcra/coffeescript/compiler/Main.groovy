@@ -28,18 +28,18 @@ class Main {
             def writer = new StringWriter()
             compiler.compile new StringReader(options.arguments()[0]), writer, options.b
 
-            print writer
+            println writer
         } else if (options.c) {
             def writer = new StringWriter()
             compiler.compile new FileReader(options.arguments()[0]), writer, options.b
 
             if (options.p) {
-                print writer
+                println writer
             } else {
                 def fileName = options.arguments()[0].replace ".coffee", ".js"
 
-                new File(fileName).withWriter { out ->
-                    out.writeLine writer.toString()
+                new File(fileName).withWriter("UTF-8") {
+                    it.writeLine writer.toString()
                 }
             }
         }
