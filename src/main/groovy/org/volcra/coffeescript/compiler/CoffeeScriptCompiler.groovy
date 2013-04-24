@@ -1,36 +1,67 @@
 package org.volcra.coffeescript.compiler
 
 import org.mozilla.javascript.Context
-import org.mozilla.javascript.Scriptable
 
+/**
+ * CoffeeScript compiler.
+ */
+@Singleton(lazy = true)
 class CoffeeScriptCompiler {
-    private Scriptable globalScope
+    /**
+     * Global Scope.
+     */
+    private static def globalScope
 
+    /**
+     * Coffee Script JavaScript.
+     */
+    private static def coffeeScript = getClass().getResource("/org/volcra/coffeescript/coffee-script.js").text
+
+    /**
+     * Default Constructor.
+     */
     CoffeeScriptCompiler() {
-        String coffeeScript = getClass().getResource("/org/volcra/coffeescript/coffee-script.js").text
-        Context context = Context.enter()
-        //context.setOptimizationLevel(-1) // Without this, Rhino hits a 64K bytecode limit and fails
-        try {
+        withContext { context ->
+            context.optimizationLevel = -1
             globalScope = context.initStandardObjects()
-            context.evaluateString globalScope, coffeeScript, "coffee-script.js", 0, null
+            context.evaluateString globalScope, coffeeScript, "coffee-script.js", 1, null
+        }
+    }
+
+    /**
+     * Higher Order function that provides a context to the closure being passed.
+     *
+     * @param c the function or closure to execute
+     */
+    def withContext(Closure c) {
+        def context = Context.enter()
+
+        try {
+            c context
         } finally {
             Context.exit()
         }
     }
 
-    void compile(Reader reader, Writer writer, Boolean bare = false) {
-        Context context = Context.enter()
-        Scriptable compileScope = context.newObject globalScope
-        compileScope.parentScope = globalScope
-        compileScope.put "coffeeScriptSource", compileScope, reader.text
+    /**
+     * Uses the reader to get the Coffee Script code and the writer to store the resulted JavaScript code.
+     *
+     * @param reader
+     * @param writer
+     * @param bare compile the JavaScript without the top-level function safety wrapper.
+     * @return the writer with the resulted code after the compilation
+     */
+    def compile(Reader reader, Writer writer, Boolean bare = false) {
+        withContext { context ->
+            def compileScope = context.newObject globalScope
+            compileScope.parentScope = globalScope
+            compileScope.put "coffeeScriptSource", compileScope, reader.text
 
-        try {
-            String script = context.evaluateString(compileScope, "CoffeeScript.compile(coffeeScriptSource, {bare: ${bare}})",
+            def script = context.evaluateString(compileScope, "CoffeeScript.compile(coffeeScriptSource, {bare: ${bare}})",
                     "CoffeeScriptCompiler", 0, null)
 
             writer << script
-        } finally {
-            Context.exit()
+            writer.flush()
         }
     }
 }

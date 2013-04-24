@@ -1,38 +1,46 @@
 package org.volcra.coffeescript.compiler
 
+/**
+ * <p>Main class.</p>
+ * <p>Parses the command line arguments and runs the CoffeeScript compiler.</p>
+ */
 class Main {
-    static cli = new CommandLine()
+    /**
+     * Command Line.
+     */
+    private static def cli = new CommandLine()
 
+    /**
+     * CoffeeScript Compiler.
+     */
+    @Lazy
+    private static def compiler = CoffeeScriptCompiler.instance
+
+    /**
+     * Parsers the command line arguments and runs the CoffeeScript compiler.
+     */
     static void main(String... args) {
         def options = cli.parse(args);
 
-        if (options == null || options.h) {
+        if (options.arguments().isEmpty() || options.h) {
             cli.usage()
-            return
-        }
-
-        def compiler = new CoffeeScriptCompiler()
-
-        if (options.e) {
+        } else if (options.e) {
             def writer = new StringWriter()
             compiler.compile new StringReader(options.arguments()[0]), writer, options.b
 
             print writer
-            return
-        }
-
-        if (options.c) {
+        } else if (options.c) {
             def writer = new StringWriter()
             compiler.compile new FileReader(options.arguments()[0]), writer, options.b
 
             if (options.p) {
                 print writer
-                return
-            }
+            } else {
+                def fileName = options.arguments()[0].replace ".coffee", ".js"
 
-            def fileName = options.arguments()[0].replace ".coffee", ".js"
-            new File(fileName).withWriter { out ->
-                out.writeLine writer.toString()
+                new File(fileName).withWriter { out ->
+                    out.writeLine writer.toString()
+                }
             }
         }
     }
