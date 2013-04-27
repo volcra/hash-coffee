@@ -15,17 +15,36 @@
  */
 package org.volcra.coffeescript.compiler
 
+/**
+ * <p>Main Test.</p>
+ * <p>This does not check for any assertions. Runs and expects no errors.</p>
+ */
 class MainTest extends GroovyTestCase {
-    void testMain() {
+    /**
+     * Calling main with no arguments. Should print help/usage.
+     */
+    void testMainEmptyArgs() {
         Main.main()
+    }
+
+    /**
+     * Calling main with CoffeeScript file. Should compile and print result to stdout.
+     */
+    void testMainCompileBareAndPrint() {
         Main.main "-cbp", "src\\test\\resources\\test.coffee"
         Main.main "-cbp", "src\\test\\resources\\hash.coffee"
     }
 
+    /**
+     * Calling main with eval option -e. Should print resulted JavaScript code to sdtout.
+     */
     void testEval() {
         Main.main "-e", "console.log num for num in [10..1]"
     }
 
+    /**
+     * Calling main with -h. Should print help/usage.
+     */
     void testHelp() {
         Main.main "-h"
     }

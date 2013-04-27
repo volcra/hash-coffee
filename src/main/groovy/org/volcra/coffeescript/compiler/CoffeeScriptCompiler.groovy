@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package org.volcra.coffeescript.compiler
+package org.volcra.coffeescript.compiler
 
 import org.mozilla.javascript.Context
 
@@ -28,12 +28,13 @@ class CoffeeScriptCompiler {
     private static def globalScope
 
     /**
-     * CoffeeScript JavaScript compiler code.
+     * CoffeeScript JavaScript compiler source.
      */
     private static def coffeeScript = getClass().getResource("/org/volcra/coffeescript/coffee-script.js").text
 
     /**
-     * Default Constructor.
+     * <p>Default Constructor.</p>
+     * <p>Initializes the Rhino engine with Standard Objects and the coffee-script source.</p>
      */
     private CoffeeScriptCompiler() {
         withContext {
@@ -48,7 +49,7 @@ class CoffeeScriptCompiler {
      *
      * @param c the function or closure to execute
      */
-    static def withContext(Closure c) {
+    private static void withContext(Closure c) {
         def context = Context.enter()
 
         try {
@@ -63,10 +64,10 @@ class CoffeeScriptCompiler {
      *
      * @param reader the reader to get the text
      * @param writer the writer to receive the output
-     * @param bare   compile the JavaScript without the top-level function safety wrapper
+     * @param bare compile the JavaScript without the top-level function safety wrapper
      * @return the writer with the resulted code
      */
-    static def compile(Reader reader, Writer writer, Boolean bare = false) {
+    static void compile(Reader reader, Writer writer, Boolean bare = false) {
         withContext {
             def compileScope = it.newObject globalScope
             compileScope.parentScope = globalScope

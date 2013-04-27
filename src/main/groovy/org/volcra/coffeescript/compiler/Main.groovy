@@ -16,7 +16,7 @@
 package org.volcra.coffeescript.compiler
 
 /**
- * <p>Main class.</p>
+ * Main class.
  * <p>Parses the command line arguments and runs the CoffeeScript compiler.</p>
  */
 class Main {
@@ -32,31 +32,48 @@ class Main {
     private static def compiler = CoffeeScriptCompiler.instance
 
     /**
-     * Parsers the command line arguments and runs the CoffeeScript compiler.
+     * <p>Parses the command line arguments and runs the CoffeeScript compiler.</p>
+     *
+     * <p>If no arguments are given, will print the Usage.</p>
+     * @param args command line arguments
      */
     static void main(String... args) {
-        def options = cli.parse args
+        def options = cli.parse(args) as OptionAccessor
+        def arguments = options.arguments()
 
-        if (options.arguments().isEmpty() || options.h) {
-            cli.usage()
-        } else if (options.e) {
-            def writer = new StringWriter()
-            compiler.compile new StringReader(options.arguments()[0]), writer, options.b
+        if (arguments.isEmpty() || options.h) cli.usage()
+        else if (options.e) eval arguments[0], options.b
+        else if (options.c) compile arguments[0], options.p, options.b
+    }
 
-            println writer
-        } else if (options.c) {
-            def writer = new StringWriter()
-            compiler.compile new FileReader(options.arguments()[0]), writer, options.b
+    /**
+     * Evaluates an input String and prints the result to the stdout.
+     *
+     * @param script CoffeeScript to evaluate
+     * @param bare bare option
+     */
+    private static void eval(String script, Boolean bare) {
+        def writer = new StringWriter()
+        compiler.compile new StringReader(script), writer, bare
 
-            if (options.p) {
-                println writer
-            } else {
-                def fileName = options.arguments()[0].replace ".coffee", ".js"
+        println writer
+    }
 
-                new File(fileName).withWriter("UTF-8") {
-                    it.writeLine writer.toString()
-                }
+    /**
+     * Compiles a script, the result may be printed to the stdout or written to a file.
+     *
+     * @param script CoffeeScript code
+     * @param print Whether to print the result to the sdtout or not
+     * @param bare bare option
+     */
+    private static void compile(String script, Boolean print, Boolean bare) {
+        def writer = new StringWriter()
+        compiler.compile new FileReader(script), writer, bare
+
+        if (print) println writer
+        else
+            new File(script.replace(".coffee", ".js")).withWriter("UTF-8") {
+                it.writeLine writer.toString()
             }
-        }
     }
 }

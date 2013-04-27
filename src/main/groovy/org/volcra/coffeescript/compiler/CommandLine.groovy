@@ -16,7 +16,7 @@
 package org.volcra.coffeescript.compiler
 
 /**
- * <p>Helper class that provides access to the command line options.</p>
+ * Helper class that provides access to the command line options.
  */
 class CommandLine {
     /**
@@ -40,7 +40,7 @@ class CommandLine {
     }
 
     /**
-     * <p>Show the command usage.</p>
+     * <p>Shows the command usage.</p>
      * <pre>
      * usage: #coffee [options]
      * Options
@@ -60,15 +60,15 @@ class CommandLine {
      *                      print it directly to stdout.
      * </pre>
      */
-    def usage() {
+    void usage() {
         cli.usage()
     }
 
     /**
-     * Parsers the arguments and returns the options.
+     * Parses the arguments and returns the options.
      *
      * @param args the arguments to parse
-     * @return the options holding the parse result
+     * @return the options holding the parser result
      */
     def parse(String... args) {
         cli.parse args
