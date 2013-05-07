@@ -70,7 +70,7 @@ class CommandLine {
      * @param args the arguments to parse
      * @return the options holding the parser result
      */
-    def parse(String... args) {
+    OptionAccessor parse(String... args) {
         cli.parse args
     }
 }

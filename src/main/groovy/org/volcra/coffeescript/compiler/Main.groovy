@@ -23,22 +23,23 @@ class Main {
     /**
      * Command Line.
      */
-    private static def cli = new CommandLine()
+    private static final def cli = new CommandLine()
 
     /**
      * CoffeeScript Compiler.
      */
     @Lazy
-    private static def compiler = CoffeeScriptCompiler.instance
+    private static final def compiler = CoffeeScriptCompiler.instance
 
     /**
      * <p>Parses the command line arguments and runs the CoffeeScript compiler.</p>
      *
      * <p>If no arguments are given, will print the Usage.</p>
+     *
      * @param args command line arguments
      */
     static void main(String... args) {
-        def options = cli.parse(args) as OptionAccessor
+        def options = cli.parse(args)
         def arguments = options.arguments()
 
         if (arguments.isEmpty() || options.h) cli.usage()
