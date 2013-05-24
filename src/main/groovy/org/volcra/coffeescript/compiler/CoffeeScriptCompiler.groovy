@@ -1,14 +1,14 @@
 /*
  * Copyright 2013 Volcra
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -25,12 +25,12 @@ class CoffeeScriptCompiler {
     /**
      * Global Scope.
      */
-    private static def globalScope
+    private static globalScope
 
     /**
      * CoffeeScript JavaScript compiler source.
      */
-    private static final def coffeeScript = getClass().getResource("/org/volcra/coffeescript/coffee-script.js").text
+    private static final COFFE_SCRIPT = getClass().getResource('/org/volcra/coffeescript/coffee-script.js').text
 
     /**
      * <p>Default Constructor.</p>
@@ -40,7 +40,7 @@ class CoffeeScriptCompiler {
         withContext {
             it.optimizationLevel = -1
             globalScope = it.initStandardObjects()
-            it.evaluateString globalScope, coffeeScript, "coffee-script.js", 1, null
+            it.evaluateString globalScope, COFFE_SCRIPT, 'coffee-script.js', 1, null
         }
     }
 
@@ -49,7 +49,7 @@ class CoffeeScriptCompiler {
      *
      * @param c the function or closure to execute
      */
-    private static void withContext(Closure c) {
+    private withContext(Closure c) {
         def context = Context.enter()
 
         try {
@@ -67,14 +67,14 @@ class CoffeeScriptCompiler {
      * @param bare compile the JavaScript without the top-level function safety wrapper
      * @return the writer with the resulted code
      */
-    static void compile(Reader reader, Writer writer, Boolean bare = false) {
+    void compile(Reader reader, Writer writer, Boolean bare = false) {
         withContext {
             def compileScope = it.newObject globalScope
             compileScope.parentScope = globalScope
-            compileScope.put "coffeeScriptSource", compileScope, reader.text
+            compileScope.put 'coffeeScriptSource', compileScope, reader.text
 
             def script = it.evaluateString compileScope, "CoffeeScript.compile(coffeeScriptSource, {bare: ${bare}})",
-                    "CoffeeScriptCompiler", 0, null
+                    'CoffeeScriptCompiler', 0, null
 
             writer << script
             writer.flush()

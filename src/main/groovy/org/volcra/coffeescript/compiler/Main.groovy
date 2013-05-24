@@ -1,14 +1,14 @@
 /*
  * Copyright 2013 Volcra
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -23,13 +23,13 @@ class Main {
     /**
      * Command Line.
      */
-    private static final def cli = new CommandLine()
+    private static final CLI = new CommandLine()
 
     /**
      * CoffeeScript Compiler.
      */
     @Lazy
-    private static final def compiler = CoffeeScriptCompiler.instance
+    private static final COMPILER = CoffeeScriptCompiler.instance
 
     /**
      * <p>Parses the command line arguments and runs the CoffeeScript compiler.</p>
@@ -39,10 +39,10 @@ class Main {
      * @param args command line arguments
      */
     static void main(String... args) {
-        def options = cli.parse(args)
+        def options = CLI.parse(args)
         def arguments = options.arguments()
 
-        if (arguments.isEmpty() || options.h) cli.usage()
+        if (arguments.isEmpty() || options.h) CLI.usage()
         else if (options.e) eval arguments[0], options.b
         else if (options.c) compile arguments[0], options.p, options.b
     }
@@ -55,7 +55,7 @@ class Main {
      */
     private static void eval(String script, Boolean bare) {
         def writer = new StringWriter()
-        compiler.compile new StringReader(script), writer, bare
+        COMPILER.compile new StringReader(script), writer, bare
 
         println writer
     }
@@ -69,11 +69,11 @@ class Main {
      */
     private static void compile(String script, Boolean print, Boolean bare) {
         def writer = new StringWriter()
-        compiler.compile new FileReader(script), writer, bare
+        COMPILER.compile new FileReader(script), writer, bare
 
         if (print) println writer
         else
-            new File(script.replace(".coffee", ".js")).withWriter("UTF-8") {
+            new File(script.replace('.coffee', '.js')).withWriter('UTF-8') {
                 it.writeLine writer.toString()
             }
     }
