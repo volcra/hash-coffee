@@ -30,7 +30,7 @@ class CoffeeScriptCompiler {
     /**
      * CoffeeScript JavaScript compiler source.
      */
-    private static final COFFE_SCRIPT = getClass().getResource('/org/volcra/coffeescript/coffee-script.js').text
+    private static final COFFEE_SCRIPT = getClass().getResource('/org/volcra/coffeescript/coffee-script.js').text
 
     /**
      * <p>Default Constructor.</p>
@@ -40,7 +40,7 @@ class CoffeeScriptCompiler {
         withContext {
             it.optimizationLevel = -1
             globalScope = it.initStandardObjects()
-            it.evaluateString globalScope, COFFE_SCRIPT, 'coffee-script.js', 1, null
+            it.evaluateString globalScope, COFFEE_SCRIPT, 'coffee-script.js', 1, null
         }
     }
 
@@ -74,7 +74,7 @@ class CoffeeScriptCompiler {
             compileScope.put 'coffeeScriptSource', compileScope, reader.text
 
             def script = it.evaluateString compileScope, "CoffeeScript.compile(coffeeScriptSource, {bare: ${bare}})",
-                    'CoffeeScriptCompiler', 0, null
+                'CoffeeScriptCompiler', 0, null
 
             writer << script
             writer.flush()
