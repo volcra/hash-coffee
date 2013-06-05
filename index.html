@@ -23,10 +23,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">#Coffee</a>
+            <a class="brand" href="#home">#Coffee</a>
             <div class="nav-collapse collapse">
               <ul class="nav pull-right">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="#home">Home</a></li>
                 <li><a href="#about">Usage</a></li>
                 <li><a href="#contact">API</a></li>
               </ul>
@@ -36,12 +36,14 @@
       </div>
     </div>
 
+    <a name="home"></a>
+
     <div class="jumbotron">
       <div class="container">
         <h1>#Coffee</h1>
         <p>The Groovy CoffeeScript Compiler</p>
         <div class="visible-phone">
-          <p><a href="#" class="btn btn-primary">Download</a> <a href="https://github.com/volcra/hash-coffee" class="btn">GitHub Project</a></p>
+          <p><a href="#" class="btn btn-primary">Download</a> <a href="https://github.com/volcra/hash-coffee/zipball/master" class="btn">GitHub Project</a></p>
         </div>
         <div class="hidden-phone">
           <p><a href="#" class="btn btn-large btn-primary">Download</a> <a href="https://github.com/volcra/hash-coffee" class="btn btn-large">GitHub Project</a></p>
@@ -68,7 +70,7 @@
             </div>
           </div>
           <div class="span6 text-center">
-            <img src="http://groovy.codehaus.org/images/groovy-logo-medium.png" width="450px">
+            <img src="img/groovy-logo.png" width="450px">
           </div>
           <div class="span6">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget interdum mi. Duis eget lacus sit amet lacus placerat ultricies nec in lorem. In felis mi, posuere imperdiet dignissim ut, tempus nec lectus. Sed auctor ante eu felis rhoncus feugiat. Nunc quis molestie nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce lacus lorem, lacinia sed vestibulum nec, ornare nec libero. Maecenas purus sapien, tristique sit amet imperdiet sed, posuere quis nibh.</p>
@@ -87,7 +89,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget interdum mi. Duis eget lacus sit amet lacus placerat ultricies nec in lorem. In felis mi, posuere imperdiet dignissim ut, tempus nec lectus. Sed auctor ante eu felis rhoncus feugiat. Nunc quis molestie nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce lacus lorem, lacinia sed vestibulum nec, ornare nec libero. Maecenas purus sapien, tristique sit amet imperdiet sed, posuere quis nibh.</p>
           </div>
           <div class="span6 text-center">
-            <img src="http://coffeescript.org/documentation/images/logo.png">
+            <img src="img/coffeescript-logo.png">
           </div>
         </div>
       </section>
@@ -102,11 +104,21 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
-<!--     <div id="screen" style="position: fixed; bottom: 20px; left: 20px; width: 100px; background-color: #ddd"></div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-37696520-3', 'volcra.github.io');
+      ga('send', 'pageview');
+    </script>
+          <!--     <div id="screen" style="position: fixed; bottom: 20px; left: 20px; width: 100px; background-color: #ddd"></div>
     <script type="text/javascript">
     $(window).on('resize', function (e) {
       $('#screen').html($(window).width() + ' ' + $(window).height());
     });
     </script>
- -->  </body>
+ -->
+</body>
 </html>
