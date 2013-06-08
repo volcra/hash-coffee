@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>#Coffee :: Groovy CoffeeScript Compiler</title>
+    <meta charset="utf-8">
+    <title>#Coffee - Groovy Coffee Compiler</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!-- Google Fonts -->
@@ -9,15 +10,19 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-    <link href="css/coffee.css" rel="stylesheet" media="screen">
-    <link href="css/coffee-responsive.css" rel="stylesheet" media="screen">
+    <link href="css/main.min.css" rel="stylesheet" media="screen">
+    <link href="css/main-responsive.min.css" rel="stylesheet" media="screen">
+    <!-- Highlight JS -->
+    <link href="http://yandex.st/highlightjs/7.3/styles/zenburn.min.css" rel="stylesheet">
+
+    <script defer src="js/require.min.js" data-main="js/main.min.js"></script>
   </head>
   <body>
 
     <div class="navbar-wrapper">
-      <div class="container">
-        <div class="navbar navbar-coffee">
-          <div class="navbar-inner">
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -25,10 +30,10 @@
             </button>
             <a class="brand" href="#home">#Coffee</a>
             <div class="nav-collapse collapse">
-              <ul class="nav pull-right">
-                <li class="active"><a href="#home">Home</a></li>
-                <li><a href="#about">Usage</a></li>
-                <li><a href="#contact">API</a></li>
+              <ul class="nav pull-right" ng-controller="MenuCtrl">
+                <li class="ng-cloak" ng-repeat="item in menu.items" ng-class="getMenuItemClassStyle(item)">
+                  <a href="{{item.url}}" target="{{item.target}}">{{item.text}}</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -36,73 +41,21 @@
       </div>
     </div>
 
-    <a name="home"></a>
-
-    <div class="jumbotron">
-      <div class="container">
-        <h1>#Coffee</h1>
-        <p>The Groovy CoffeeScript Compiler</p>
-        <div class="visible-phone">
-          <p><a href="#" class="btn btn-primary">Download</a> <a href="https://github.com/volcra/hash-coffee/zipball/master" class="btn">GitHub Project</a></p>
-        </div>
-        <div class="hidden-phone">
-          <p><a href="#" class="btn btn-large btn-primary">Download</a> <a href="https://github.com/volcra/hash-coffee" class="btn btn-large">GitHub Project</a></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <section></section>
-
-      <section>
-        <div class="lead">
-          <p><strong>#Coffee</strong> or Hash-Coffee is an implementation of the CoffeeScript command line written in Groovy. It uses the core JavaScript compiler and Mozilla Rhino as libraries to compile the CoffeeScript source into JavaScript.</p>
-          <p>Many of the compiler options available in NodeJS are being ported to the Groovy version.</p>
-          <p><strong>#Coffee</strong> can be integrated as a Command Line Tool, JAR dependency and as Maven or Gradle Plugins.</p>
-        </div>
-      </section>
-
-      <section class="groovy">
-        <div class="row">
-          <div class="span12">
-            <div class="page-header">
-              <h1>Groovy</h1>
-            </div>
-          </div>
-          <div class="span6 text-center">
-            <img src="img/groovy-logo.png" width="450px">
-          </div>
-          <div class="span6">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget interdum mi. Duis eget lacus sit amet lacus placerat ultricies nec in lorem. In felis mi, posuere imperdiet dignissim ut, tempus nec lectus. Sed auctor ante eu felis rhoncus feugiat. Nunc quis molestie nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce lacus lorem, lacinia sed vestibulum nec, ornare nec libero. Maecenas purus sapien, tristique sit amet imperdiet sed, posuere quis nibh.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="coffeescript">
-        <div class="row">
-          <div class="span12">
-            <div class="page-header">
-              <h1>CoffeeScript</h1>
-            </div>
-          </div>
-          <div class="span6">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget interdum mi. Duis eget lacus sit amet lacus placerat ultricies nec in lorem. In felis mi, posuere imperdiet dignissim ut, tempus nec lectus. Sed auctor ante eu felis rhoncus feugiat. Nunc quis molestie nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce lacus lorem, lacinia sed vestibulum nec, ornare nec libero. Maecenas purus sapien, tristique sit amet imperdiet sed, posuere quis nibh.</p>
-          </div>
-          <div class="span6 text-center">
-            <img src="img/coffeescript-logo.png">
-          </div>
-        </div>
-      </section>
-
-    </div>
+    <div class="view" ng-view></div>
 
     <footer>
-      <p>Volcra &copy; 2013.</p>
-      <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
+      <div class="container">
+        <div class="row">
+          <div class="span5">
+            <img src="img/volcra.png" width="125" height="50">
+          </div>
+          <div class="span7">
+            <p>Volcra &copy; 2013.</p>
+            <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
+          </div>
+        </div>
+      </div>
     </footer>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -113,12 +66,5 @@
       ga('create', 'UA-37696520-3', 'volcra.github.io');
       ga('send', 'pageview');
     </script>
-          <!--     <div id="screen" style="position: fixed; bottom: 20px; left: 20px; width: 100px; background-color: #ddd"></div>
-    <script type="text/javascript">
-    $(window).on('resize', function (e) {
-      $('#screen').html($(window).width() + ' ' + $(window).height());
-    });
-    </script>
- -->
-</body>
+  </body>
 </html>
