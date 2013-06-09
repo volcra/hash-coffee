@@ -1,62 +1,98 @@
-    <div class="jumbotron">
-      <div class="container">
-        <h1>#Coffee</h1>
-        <p class="lead">The Groovy Coffee Compiler</p>
-        <div class="visible-phone">
-          <p><a href="https://github.com/volcra/hash-less/zipball/master" class="btn btn-primary">Download</a> <a href="https://github.com/volcra/hash-less" class="btn">GitHub Project</a></p>
-        </div>
-        <div class="hidden-phone">
-          <p>
-            <a href="https://github.com/volcra/hash-less/zipball/master" class="btn btn-large btn-primary">Download</a>
-            <a href="https://github.com/volcra/hash-less" class="btn btn-large">GitHub Project</a>
-          </p>
-        </div>
-      </div>
+<div class="jumbotron">
+  <div class="container">
+    <h1>#Coffee</h1>
+    <p class="lead">The Groovy Coffee Compiler</p>
+    <div class="visible-phone">
+      <p><a href="https://github.com/volcra/hash-less/zipball/master" class="btn btn-primary">Download</a> <a href="https://github.com/volcra/hash-less" class="btn">GitHub Project</a></p>
     </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <section></section>
-
-          <section>
-            <div class="lead">
-              <p><strong>#Coffee</strong> or Hash-Coffee is an implementation of the Coffee command line. It is written in Groovy and uses the core JavaScript compiler and Mozilla Rhino as libraries to compile the Coffee style sheet into CSS.</p>
-
-              <p>Many of the compiler options available in NodeJS are being ported to the Groovy version.</p>
-
-              <p><strong>#Coffee</strong> can be integrated as a Command Line Tool, JAR dependency and Maven or Gradle Plugins.</p>
-            </div>
-          </section>
-
-          <section class="groovy">
-            <div class="page-header">
-              <h1>Groovy</h1>
-            </div>
-            <div class="row">
-              <div class="span6 text-center">
-                <img src="img/groovy-logo.png" width="450" height="225">
-              </div>
-              <div class="span6">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget interdum mi. Duis eget lacus sit amet lacus placerat ultricies nec in lorem. In felis mi, posuere imperdiet dignissim ut, tempus nec lectus. Sed auctor ante eu felis rhoncus feugiat. Nunc quis molestie nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce lacus lorem, lacinia sed vestibulum nec, ornare nec libero. Maecenas purus sapien, tristique sit amet imperdiet sed, posuere quis nibh.</p>
-              </div>
-            </div>
-          </section>
-
-          <section class="Coffee">
-            <div class="page-header">
-              <h1>Coffee</h1>
-            </div>
-            <div class="row">
-              <div class="span6">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget interdum mi. Duis eget lacus sit amet lacus placerat ultricies nec in lorem. In felis mi, posuere imperdiet dignissim ut, tempus nec lectus. Sed auctor ante eu felis rhoncus feugiat. Nunc quis molestie nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce lacus lorem, lacinia sed vestibulum nec, ornare nec libero. Maecenas purus sapien, tristique sit amet imperdiet sed, posuere quis nibh.</p>
-              </div>
-              <div class="span6 text-center">
-                <img src="img/coffeescript-logo.png" width="450" height="77">
-              </div>
-            </div>
-          </section>
-
-        </div>
-      </div>
+    <div class="hidden-phone">
+      <p>
+        <a href="https://github.com/volcra/hash-less/zipball/master" class="btn btn-large btn-primary">Download</a>
+        <a href="https://github.com/volcra/hash-less" class="btn btn-large">GitHub Project</a>
+      </p>
     </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <section>
+        <p class="lead"><strong>#Coffee</strong> or Hash-Coffee is an implementation of the Coffee command line. It is written in Groovy and uses the core JavaScript compiler and Mozilla Rhino as libraries to compile the Coffee style sheet into CSS.</p>
+        <p class="lead">Many of the compiler options available in NodeJS are being ported to the Groovy version.</p>
+        <p class="lead"><strong>#Coffee</strong> can be integrated as a Command Line Tool, JAR dependency and Maven or Gradle Plugins.</p>
+      </section>
+
+      <section class="intro">
+        <div class="page-header text-center">
+          <h1>Introduction</h1>
+        </div>
+        <p>#Coffee is developed in Groovy. Why? Groovy is a dynamic language for the JVM. Comes with features that
+          complement the Java development. Syntax is less verbose and Closures give the functional style missing in Java.
+          These and some other features increase developer productivity by reducing boilerplate code when developing console
+          applications.</p>
+        <p>CoffeeScript is a language that compiles into JavaScript. The code compiles one-to-one into the equivalent JS,
+          and there is no interpreation at runtime.</p>
+        <p>Here is an example of the equivalent code in CoffeeScript and JavaScript</p>
+        <div class="row">
+          <div class="span6">
+            <small><strong>CoffeeScript</strong></small>
+            <pre><code hljs class="coffeescript">square = (x) -> x * x
+cube   = (x) -> square(x) * x</code></pre>
+          </div>
+          <div class="span6">
+            <small><strong>JavaScript</strong></small>
+            <pre><code hljs class="javascript">var square = function(x) {
+  return x * x;
+};
+
+var cube = function(x) {
+  return square(x) * x;
+};</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="page-header text-center">
+          <h1>Quick Start</h1>
+        </div>
+        <h2>Command-Line</h2>
+        <p>Download and build from source. For instructions go to <a href="#/download">Download</a>.</p>
+        <p>Then compile your scripts.</p>
+        <pre><code hljs class="bash">$>build\install\hash-coffee\bin\hash-coffee -c app.coffee</code></pre>
+        <h2>JAR dependency <span class="label label-important">Under development</span></h2>
+        <p><a href="api" target="_blank">API</a></p>
+        <div class="row">
+          <div class="span6">
+            <h3>Maven</h3>
+            <pre><code hljs class="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.volcra.coffee&lt;/groupId&gt;
+  &lt;artifactId&gt;coffee-compiler&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+          </div>
+          <div class="span6">
+            <h3>Ivy</h3>
+            <pre><code hljs class="xml">&lt;dependency org="org.volcra.coffee" name="coffee-compiler" rev="1.0.0-SNAPSHOT" /&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span6">
+            <h3>Gradle/Grails</h3>
+            <pre><code hljs class="java">compile 'org.volcra.coffee:coffee-compiler:1.0.0-SNAPSHOT'
+</code></pre>
+          </div>
+          <div class="span6">
+            <h3>Groovy Grape</h3>
+            <pre><code hljs class="java">@Grapes(
+  @Grab(group='org.volcra.coffee', module='coffee-compiler', version='1.0.0-SNAPSHOT')
+)</code></pre>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>

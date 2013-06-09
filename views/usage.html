@@ -1,30 +1,30 @@
-    <div class="jumbotron subhead">
-      <div class="container">
-        <h1>Usage</h1>
-        <p class="lead">How to get started</p>
-      </div>
-    </div>
+<div class="jumbotron subhead">
+  <div class="container">
+    <h1>Usage</h1>
+    <p class="lead">How to get started</p>
+  </div>
+</div>
 
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <section>
-            <div class="page-header">
-              <h1>Getting Started</h1>
-            </div>
-            <p>You need first to get #Coffee, go to the <a href="#/download">Download</a> page for more information on how to install and set up #Coffee.</p>
-          </section>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <section>
+        <div class="page-header">
+          <h1>Getting Started</h1>
         </div>
-      </div>
+        <p>You need first to get #Coffee, go to the <a href="#/download">Download</a> page for more information on how to install and set up #Coffee.</p>
+      </section>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="span12">
-          <section>
-            <div class="page-header">
-              <h1>Getting Help</h1>
-            </div>
-            <p>Run #Coffee without any options or passing <code>-h</code> or <code>--help</code> to get help.</p>
-            <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee
+  <div class="row">
+    <div class="span12">
+      <section>
+        <div class="page-header">
+          <h1>Getting Help</h1>
+        </div>
+        <p>Run #Coffee without any options or passing <code>-h</code> or <code>--help</code> to get help.</p>
+        <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee
 usage: #coffee [options]
 Options
  -b,--bare           Compile the JavaScript without the top-level function
@@ -35,36 +35,37 @@ Options
                      directly from the command line.
  -h,--help           Print Help.
  -j,--join &lt;FILE&gt;    Before compiling, concatenate all scripts together in
-                     the order they were passed, and write them into the
-                     specified file. Useful for building large projects.
+                     the order they were passed,
+                     and write them into the specified file. Useful for
+                     building large projects.
  -o,--output &lt;DIR&gt;   Write out all compiled JavaScript files into the
                      specified directory.
  -p,--print          Instead of writing out the JavaScript as a file,
-                     print it directly to stdout.</pre>
-          </section>
+                     print it directly to stdout..</pre>
+      </section>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="span12">
+      <section>
+        <div class="page-header">
+          <h1>Command-Line Usage</h1>
         </div>
-      </div>
-
-
-      <div class="row">
-        <div class="span12">
-          <section>
-            <div class="page-header">
-              <h1>Command-Line Usage</h1>
-            </div>
-            <h2>Options</h2>
-            <h3 class="code">-b,--bare</h3>
-            <p>Compile the JavaScript without the top-level function safety wrapper.</p>
-            <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee -b 'console.log num for num in [10..1]'
+        <h2>Options</h2>
+        <h3 class="code">-b,--bare</h3>
+        <p>Compile the JavaScript without the top-level function safety wrapper.</p>
+        <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee -b 'console.log num for num in [10..1]'
 var num, _i;
 
 for (num = _i = 10; _i >= 1; num = --_i) {
   console.log(num);
 }</pre>
-            <div class="alert alert-info">
-              The safety wrapper is the anonymous function around your code. Compare to the output above.
-            </div>
-            <pre><code class="javascript">(function() {
+        <div class="alert alert-info">
+          The safety wrapper is the anonymous function around your code. Compare to the output above.
+        </div>
+        <pre><code hljs class="javascript">(function() {
   var num, _i;
 
   for (num = _i = 10; _i >= 1; num = --_i) {
@@ -73,11 +74,11 @@ for (num = _i = 10; _i >= 1; num = --_i) {
 
 }).call(this);</code></pre>
 
-            <h3 class="code">-c,--compile</h3>
-            <p>Compile a .coffee script into a .js JavaScript file of the same name.</p>
-            <h3 class="code">-e,--eval</h3>
-            <p>Compile and print a little snippet of CoffeeScript directly from the command line.</p>
-            <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee -e 'console.log num for num in [10..1]'
+        <h3 class="code">-c,--compile</h3>
+        <p>Compile a .coffee script into a .js JavaScript file of the same name.</p>
+        <h3 class="code">-e,--eval</h3>
+        <p>Compile and print a little snippet of CoffeeScript directly from the command line.</p>
+        <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee -e 'console.log num for num in [10..1]'
 (function() {
   var num, _i;
 
@@ -86,32 +87,30 @@ for (num = _i = 10; _i >= 1; num = --_i) {
   }
 
 }).call(this);</pre>
-            <h3 class="code">-j,--join &lt;FILE&gt;</h3>
-            <p>This is usefull for projects with multiple sources. Before compiling, the list of files will be joined togheter in the
-              order they were passed.</p>
-            <h3 class="code">-o,--output &lt;DIR&gt;</h3>
-            <p>By default compiled JS are written to the same location fo the LESS style sheet. To change that behavior use this option.</p>
-            <h3 class="code">-p,--print</h3>
-            <p>Write the compiled JS to <code>stdout</code>.</p>
-            <p>You may send the output to a file of your choice.</p>
-            <pre><code class="bash">$>build\install\hash-coffee\bin\hash-coffee -p src\test\resources\test.coffee > test.js</code></pre>
-            <h2>Sample File</h2>
-            <p>This file is located at <code>${basedir}\src\test\resources\test.coffee</code>.
-              Where basedir is the path where you unpacked the application.</p>
-            <pre><code class="coffeescript"># testing coffeescript
+        <h3 class="code">-j,--join &lt;FILE&gt;</h3>
+        <p>This is usefull for projects with multiple sources. Before compiling, the list of files will be joined togheter in the
+          order they were passed.</p>
+        <h3 class="code">-o,--output &lt;DIR&gt;</h3>
+        <p>By default compiled JS are written to the same location fo the LESS style sheet. To change that behavior use this option.</p>
+        <h3 class="code">-p,--print</h3>
+        <p>Write the compiled JS to <code>stdout</code>.</p>
+        <p>You may send the output to a file of your choice.</p>
+        <pre><code hljs class="bash">$>build\install\hash-coffee\bin\hash-coffee -p src\test\resources\test.coffee > test.js</code></pre>
+        <h2>Sample File</h2>
+        <p>This file is located at <code>${basedir}\src\test\resources\test.coffee</code>.
+          Where basedir is the path where you unpacked the application.</p>
+        <pre><code hljs class="coffeescript">class Greet
+  constructor: (@who) ->
 
-class Greet
-    constructor: (@who) ->
-
-    salute: () ->
-        console.log "Hello #{@who}"
+salute: () ->
+  console.log "Hello #{@who}"
 
 g = new Greet "world"
 g.salute()</code></pre>
-            <p>Then execute the hash-coffee command. The option <code>-p</code> will instruct the command to
-              print the result to the console.</p>
-            <p>This will compile the source file test.coffee and produce the following output.</p>
-            <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee -p -b src\test\resources\test.coffee
+        <p>Then execute the hash-coffee command. The option <code>-p</code> will instruct the command to
+          print the result to the console.</p>
+        <p>This will compile the source file test.coffee and produce the following output.</p>
+        <pre class="screen">$>build\install\hash-coffee\bin\hash-coffee -p -b src\test\resources\test.coffee
 var Greet, g;
 
 Greet = (function() {
@@ -130,12 +129,8 @@ Greet = (function() {
 g = new Greet("world");
 
 g.salute();</pre>
-          </section>
-        </div>
-      </div>
-
+      </section>
     </div>
+  </div>
 
-    <script type="text/javascript">
-      $('pre > code').each(function (i, el) { hljs.highlightBlock(el); });
-    </script>
+</div>
