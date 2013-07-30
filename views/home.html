@@ -1,22 +1,25 @@
-<div class="jumbotron">
+<div class="masthead">
   <div class="container">
-    <h1>#Coffee</h1>
-    <p class="lead">The Groovy Coffee Compiler</p>
-    <div class="visible-phone">
-      <p><a href="https://github.com/volcra/hash-coffee/zipball/master" class="btn btn-primary">Download</a> <a href="https://github.com/volcra/hash-coffee" class="btn">GitHub Project</a></p>
-    </div>
-    <div class="hidden-phone">
-      <p>
-        <a href="https://github.com/volcra/hash-coffee/zipball/master" class="btn btn-large btn-primary">Download</a>
-        <a href="https://github.com/volcra/hash-coffee" class="btn btn-large">GitHub Project</a>
-      </p>
+    <div class="row">
+      <div class="col-12">
+        <h1>#Coffee</h1>
+        <p class="lead">The Groovy CoffeeScript Compiler</p>
+        <p class="visible-sm">
+          <a href="https://github.com/volcra/hash-coffee/zipball/master" class="btn btn-danger">Download</a>
+        </p>
+        <p class="hidden-sm">
+          <a href="https://github.com/volcra/hash-coffee/zipball/master" class="btn btn-large btn-danger">Download</a>
+        </p>
+      </div>
     </div>
   </div>
 </div>
 
+
 <div class="container">
   <div class="row">
-    <div class="span12">
+    <div class="col-12">
+      <br>
       <section>
         <p class="lead"><strong>#Coffee</strong> or Hash-Coffee is an implementation of the Coffee command line. It is written in Groovy and uses the core JavaScript compiler and Mozilla Rhino as libraries to compile the Coffee scripts into JS.</p>
         <p class="lead">Many of the compiler options available in NodeJS are being ported to the Groovy version.</p>
@@ -35,12 +38,12 @@
           and there is no interpreation at runtime.</p>
         <p>Here is an example of the equivalent code in CoffeeScript and JavaScript</p>
         <div class="row">
-          <div class="span6">
+          <div class="col-lg-6">
             <small><strong>CoffeeScript</strong></small>
             <pre><code hljs class="coffeescript">square = (x) -> x * x
 cube   = (x) -> square(x) * x</code></pre>
           </div>
-          <div class="span6">
+          <div class="col-lg-6">
             <small><strong>JavaScript</strong></small>
             <pre><code hljs class="javascript">var square = function(x) {
   return x * x;
@@ -61,10 +64,10 @@ var cube = function(x) {
         <p>Download and build from source. For instructions go to <a href="#/download">Download</a>.</p>
         <p>Then compile your scripts.</p>
         <pre><code hljs class="bash">$>build\install\hash-coffee\bin\hash-coffee -c app.coffee</code></pre>
-        <h2>JAR dependency <span class="label label-important">Under development</span></h2>
-        <p><a href="api" target="_blank">API</a></p>
+        <h2>JAR dependency</h2>
+        <p><span class="label label-danger">Under development, not production ready</span></p>
         <div class="row">
-          <div class="span6">
+          <div class="col-lg-6">
             <h3>Maven</h3>
             <pre><code hljs class="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.volcra.coffee&lt;/groupId&gt;
@@ -72,19 +75,19 @@ var cube = function(x) {
   &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
           </div>
-          <div class="span6">
+          <div class="col-lg-6">
             <h3>Ivy</h3>
             <pre><code hljs class="xml">&lt;dependency org="org.volcra.coffee" name="coffee-compiler" rev="1.0.0-SNAPSHOT" /&gt;
 </code></pre>
           </div>
         </div>
         <div class="row">
-          <div class="span6">
+          <div class="col-lg-6">
             <h3>Gradle/Grails</h3>
             <pre><code hljs class="java">compile 'org.volcra.coffee:coffee-compiler:1.0.0-SNAPSHOT'
 </code></pre>
           </div>
-          <div class="span6">
+          <div class="col-lg-6">
             <h3>Groovy Grape</h3>
             <pre><code hljs class="java">@Grapes(
   @Grab(group='org.volcra.coffee', module='coffee-compiler', version='1.0.0-SNAPSHOT')
