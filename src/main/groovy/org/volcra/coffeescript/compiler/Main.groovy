@@ -72,9 +72,8 @@ class Main {
         COMPILER.compile new FileReader(script), writer, bare
 
         if (print) println writer
-        else
-            new File(script.replace('.coffee', '.js')).withWriter('UTF-8') {
-                it.writeLine writer.toString()
-            }
+        new File(script.replace('.coffee', '.js')).withWriter('UTF-8') {
+            it.writeLine writer.toString()
+        }
     }
 }
