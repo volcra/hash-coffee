@@ -20,7 +20,7 @@ import org.mozilla.javascript.Context
 /**
  * CoffeeScript compiler.
  */
-@Singleton(lazy = true)
+@Singleton(lazy = true, strict = false)
 class CoffeeScriptCompiler {
     /**
      * Global Scope.
@@ -30,7 +30,7 @@ class CoffeeScriptCompiler {
     /**
      * CoffeeScript JavaScript compiler source.
      */
-    private static final COFFEE_SCRIPT = getClass().getResource('/org/volcra/coffeescript/coffee-script.js').text
+    private static final COFFEE_SCRIPT = getClass().getResource('/org/volcra/coffeescript/coffee-script-1.7.1.js').text
 
     /**
      * <p>Default Constructor.</p>

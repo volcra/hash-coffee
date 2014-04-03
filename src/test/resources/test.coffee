@@ -8,3 +8,10 @@ class Greet
 
 g = new Greet "world"
 g.salute()
+
+$ 'body'
+.click (e) ->
+  $ '.box'
+  .fadeIn 'fast'
+  .addClass '.active'
+.css 'background', 'white'
