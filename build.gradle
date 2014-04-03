@@ -8,13 +8,17 @@ version = '0.0.1-SNAPSHOT'
 mainClassName = 'org.volcra.coffeescript.compiler.Main'
 
 repositories {
-    mavenCentral()
+    //mavenCentral()
+
+    maven {
+        url = 'http://repo.genworth.net/content/groups/public'
+    }
 
     mavenLocal()
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.1.4'
+    compile 'org.codehaus.groovy:groovy-all:2.2.2:indy'
     compile 'org.mozilla:rhino:1.7R4'
     compile 'commons-cli:commons-cli:1.2'
     compile 'commons-io:commons-io:2.4'
@@ -38,4 +42,8 @@ jar {
 task libs(type: Sync) {
   from configurations.compile
   into 'build\\libs'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
 }
