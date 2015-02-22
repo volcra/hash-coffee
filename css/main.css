@@ -33,7 +33,7 @@ footer .volcra {
   background-color: #C93836;
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
      -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);  
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hash-navbar .navbar-brand,
@@ -49,14 +49,12 @@ footer .volcra {
   /*font-size: 16px;*/
 }
 
-.hash-navbar .navbar-nav > .active > a, 
-.hash-navbar .navbar-nav > .active > a:hover, 
-.hash-navbar .navbar-nav > .active > a:focus {
+.nav > li > a:focus, .nav > li > a:hover {
+  text-decoration: none;
   background-color: #b53231;
-  color: #fff;
 }
 
-.hash-navbar .navbar-nav > li > a:hover, 
+.hash-navbar .navbar-nav > li > a:hover,
 .hash-navbar .navbar-nav > li > a:focus {
   color: #fff;
 }
@@ -69,7 +67,7 @@ footer .volcra {
   background-color: #ededed;
 }
 
-.hash-navbar .navbar-toggle:hover, 
+.hash-navbar .navbar-toggle:hover,
 .hash-navbar .navbar-toggle:focus {
   background-color: #b53231;
 }
@@ -95,7 +93,7 @@ a {
 
 a,
 a:hover,
-a:focus { 
+a:focus {
   color: #b34343;
 }
 
@@ -152,7 +150,7 @@ pre.screen {
 .header,
 .masthead {
   background-color: #262523;
-  color: #efefef; 
+  color: #efefef;
 }
 
 .masthead {
@@ -187,7 +185,7 @@ pre.screen {
 
 .masthead p.lead {
   font-size: 25px;
-  text-shadow: 0 5px 10px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,1);  
+  text-shadow: 0 5px 10px rgba(0,0,0,1), 0 0 30px rgba(0,0,0,1);
 }
 
 .header {
@@ -197,7 +195,7 @@ pre.screen {
 
 .masthead h1,
 .masthead p.lead {
-  font-family: 'Finger Paint', cursive;  
+  font-family: 'Finger Paint', cursive;
 }
 
 .header h1 {
@@ -241,7 +239,7 @@ pre.screen {
 @media (min-width: 768px) and (max-width: 991px) {
   .masthead h1 {
     font-size: 60px;
-  } 
+  }
 
   .masthead p.lead {
     font-size: 30px;
@@ -252,7 +250,7 @@ pre.screen {
 @media (min-width: 992px) {
   .masthead h1 {
     font-size: 100px;
-  }  
+  }
 
   .masthead p.lead {
     font-size: 50px;
@@ -263,7 +261,7 @@ pre.screen {
 @media (min-width: 1200px) {
   .masthead h1 {
     font-size: 100px;
-  }  
+  }
 
   .masthead p.lead {
     font-size: 50px;

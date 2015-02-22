@@ -12,9 +12,9 @@ require.config({
   },
   paths: {
     angular: 'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min',
-    jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min',
+    jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min',
     hljs: 'highlight.pack',
-    bootstrap: 'bootstrap.min'
+    bootstrap: 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min'
   }
 });
 

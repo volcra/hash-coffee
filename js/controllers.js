@@ -3,7 +3,7 @@
 /* Controllers */
 
 define(['app'], function (app) {
-  app.controller('MenuCtrl', ['$scope', '$location', function ($scope, $location) {
+  app.controller('MenuController', ['$scope', '$location', function ($scope, $location) {
     $scope.menu = {
       items: [{
           text: 'Download', url: '#/download', target: '_self'
