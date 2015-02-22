@@ -5,6 +5,7 @@ bin/
 classes/
 .gradle/
 .groovy/
+.idea/
 
 # Sublime Text
 *.sublime*
