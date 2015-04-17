@@ -33,6 +33,9 @@ class MainTest extends GroovyTestCase {
     void testMainCompileBareAndPrint() {
         Main.main '-cbp', 'src\\test\\resources\\test.coffee'
         Main.main '-cbp', 'src\\test\\resources\\hash.coffee'
+
+		assert new File('src/test/resources/test.js').exists()
+		assert new File('src/test/resources/hash.js').exists()
     }
 
     /**
